@@ -77,7 +77,8 @@ function UsersTable() {
       page = parseInt(pageParam, 10);
       if (isNaN(page) || page < 1) {
         page = 1;
-      } else if (page > pageCount) {
+      } else if (page > pageCount && pageCount > 0) {
+        // Add this check
         page = pageCount;
       }
     }
@@ -113,7 +114,7 @@ function UsersTable() {
 
   return (
     <Menus>
-      <Table columns="0.1fr 0.4fr 1fr 0.8fr 0.4fr 0.5fr 0.5fr 0.5fr 0.4fr 0.1fr;">
+      <Table columns="0.1fr 0.4fr 0.8fr 0.8fr 0.4fr 0.5fr 0.5fr 0.5fr 0.4fr 0.1fr;">
         <Table.Header>
           <div></div>
           <HeaderCell>
@@ -196,11 +197,13 @@ function UsersTable() {
         />
 
         <Table.Footer>
-          <Pagination
-            count={filteredUsers.length}
-            currentPage={currentPage}
-            pageCount={pageCount}
-          />
+          {pageCount > 0 && ( // Add this check
+            <Pagination
+              count={filteredUsers.length}
+              currentPage={currentPage}
+              pageCount={pageCount}
+            />
+          )}
         </Table.Footer>
       </Table>
     </Menus>

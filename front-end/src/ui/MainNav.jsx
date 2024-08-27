@@ -84,8 +84,8 @@ NavItem.propTypes = {
 
 function MainNav() {
   const navItems = [
-    { icon: <HiOutlineHome />, text: "Home", to: "/" },
-    { icon: <HiOutlineUsers />, text: "Users", to: "/users" },
+    { icon: <HiOutlineHome />, text: "Accueil", to: "/" },
+    { icon: <HiOutlineUsers />, text: "Utilisateurs", to: "/users" },
     {
       icon: <HiOutlineCog6Tooth />,
       text: "Settings",

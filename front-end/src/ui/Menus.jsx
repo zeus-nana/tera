@@ -88,7 +88,7 @@ Menus.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-function Toggle({ id }) {
+function Toggle({ id, children, icon = <HiEllipsisVertical /> }) {
   const { openId, close, open, setPosition } = useContext(MenusContext);
 
   function handleClick(e) {
@@ -103,15 +103,13 @@ function Toggle({ id }) {
     openId === "" || openId !== id ? open(id) : close();
   }
 
-  return (
-    <StyledToggle onClick={handleClick}>
-      <HiEllipsisVertical />
-    </StyledToggle>
-  );
+  return <StyledToggle onClick={handleClick}>{children || icon}</StyledToggle>;
 }
 
 Toggle.propTypes = {
   id: PropTypes.string,
+  children: PropTypes.node,
+  icon: PropTypes.node,
 };
 
 function List({ id, children }) {
@@ -130,7 +128,7 @@ function List({ id, children }) {
 
 List.propTypes = {
   id: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 function Button({ children, icon, onClick, disabled }) {

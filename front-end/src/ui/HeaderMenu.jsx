@@ -4,7 +4,11 @@ import { useUser } from "../features/authentication/useUser.js";
 import { useLogout } from "../features/authentication/useLogout.js";
 import Modal from "./Modal.jsx";
 import Menus from "./Menus.jsx";
-import { HiArrowRightOnRectangle, HiPencil } from "react-icons/hi2";
+import {
+  HiArrowRightOnRectangle,
+  HiMiniChevronDown,
+  HiPencil,
+} from "react-icons/hi2";
 import ChangePasswordForm from "../features/authentication/ChangePasswordForm.jsx";
 
 const StyledHeaderMenu = styled.ul`
@@ -20,7 +24,7 @@ function HeaderMenu() {
     <StyledHeaderMenu>
       <Modal>
         <Menus.Menu>
-          <Menus.Toggle id={user.id.toString()} />
+          <Menus.Toggle id={user.id.toString()} icon={<HiMiniChevronDown />} />
           <Menus.List id={user.id.toString()}>
             <Modal.Open opens="editPassword">
               <Menus.Button icon={<HiPencil />}>
